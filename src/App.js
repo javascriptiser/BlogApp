@@ -1,16 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Route} from "react-router-dom";
-import PostContainer from "./Components/Posts/PostsContainer";
-import Navbar from "./Components/Navbar/Navbar";
+import PostsContainer from "./Components/Posts/PostsContainer";
 
 let App = () => {
     return (
         <div>
-            <Navbar/>
-            <div className="app-wrapper-content">
-                <Route path="/posts" render={() => <PostContainer/>}/>
-            </div>
+            <PostsContainer/>
         </div>
     );
 }
