@@ -1,4 +1,4 @@
-import {setPageAC, showPostsAC} from "../../redux/reducers/posts-reducer";
+import {deletePostById, setPageAC, setTotalPostsCountAC, showPostsAC} from "../../redux/reducers/posts-reducer";
 import {connect} from "react-redux";
 import Posts from "./Posts";
 
@@ -18,6 +18,12 @@ let mapDispatchToProps = (dispatch) => {
         },
         setPage: (page) => {
             dispatch(setPageAC(page))
+        },
+        setTotalPostsCount: (count) => {
+            dispatch(setTotalPostsCountAC(count))
+        },
+        deletePostById: (id) => {
+            dispatch(deletePostById(id))
         }
     }
 }

@@ -1,5 +1,38 @@
 .selectedPage {
-    font-size: 25px;
+    font-size: 50px;
     color: pink;
 }
 
+.appWrapper {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.postsContainer {
+    display: flex;
+}
+
+.postsItem {
+    height: 100vh;
+}
+
+.postTitle {
+    text-align: center;
+}
+.postContent{
+    min-height: 450px;
+    min-width: 600px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.pageContainer {
+
+    font-size: 25px;
+}
