@@ -1,7 +1,6 @@
 const SHOW_POSTS = 'SHOW_POSTS'
 const SET_PAGE = 'SET_PAGE'
 const SET_TOTAL_POSTS_COUNT = 'SET_TOTAL_POSTS_COUNT'
-const DELETE_POST_BY_ID = 'DELETE_POST_BY_ID'
 
 let initialState = {
     posts: [],
@@ -29,35 +28,23 @@ const postsReducer = (state = initialState, action) => {
                 totalPostsCount : action.totalPostsCount
             }
         }
-        case DELETE_POST_BY_ID: {
-            return {
-                ...state,
-                id : action.id
-            }
-        }
         default:
             return state
     }
 }
-export const deletePostById = (id) =>{
-    return {
-        type: DELETE_POST_BY_ID,
-        id : id
-    }
-}
-export const setTotalPostsCountAC= (count) => {
+export const setTotalPostsCount= (count) => {
     return {
         type: SET_TOTAL_POSTS_COUNT,
         totalPostsCount: count
     }
 }
-export const setPageAC = (page) => {
+export const setPage= (page) => {
     return {
         type: SET_PAGE,
         currentPage: page
     }
 }
-export const showPostsAC = (posts) => {
+export const showPosts = (posts) => {
     return {
         type: SHOW_POSTS,
         posts: posts
