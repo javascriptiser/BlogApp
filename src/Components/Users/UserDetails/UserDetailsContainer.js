@@ -7,7 +7,6 @@ import {withRouter} from "react-router";
 
 class UserDetailsContainer extends React.Component {
     componentDidMount() {
-        debugger
         let idUser = this.props.match.params.idUser;
         if (!idUser) {
             idUser = 1
