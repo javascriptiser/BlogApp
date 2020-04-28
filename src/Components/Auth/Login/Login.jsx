@@ -5,16 +5,20 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 let Login = (props) => {
-    //  let bodyParams = {
-    //     login: 'qspeak',
-    //     password: 'barbariska'
-    // }
+
     let loginValue = React.createRef()
     let passwordValue = React.createRef()
+    let checkBoxValue = React.createRef()
 
-    let onSubmit = (loginValueInput, passwordInput) => {
-        props.onSubmit({login: loginValueInput.current.value, password: passwordInput.current.value})
+    let onSubmit = (loginValueInput, passwordInput, checkBox) => {
+        props.onSubmit({
+            login: loginValueInput.current.value,
+            password: passwordInput.current.value,
+            checkBox: checkBox.current.checked
+        })
     }
+
+
     return <div className={s.loginWrapper}>{
         <div className={s.form}>
             <div className="form-group">
@@ -32,13 +36,14 @@ let Login = (props) => {
                         <input type="password" className="form-control"
                                placeholder={props.authData.password ? props.authData.password : "Password"}
                                name="password" ref={passwordValue}/>
+                        <div>{props.errorText==='' ? '' : props.errorText}</div>
                     </div>
                 </div>
                 <div className="form-group">
                     <div className="col-sm-offset-2 col-sm-10">
                         <div className="checkbox">
                             <label>
-                                <input type="checkbox" name="not_attach_ip"/> Не прикреплять к IP (не безопасно)
+                                <input type="checkbox" name="checkbox" ref={checkBoxValue}/> Запомнить меня
                             </label>
                         </div>
                     </div>
@@ -46,7 +51,7 @@ let Login = (props) => {
                 <div className="form-group">
                     <div className="col-sm-offset-2 col-sm-10">
                         <button className="btn btn-primary btn-sm" onClick={() => {
-                            onSubmit(loginValue, passwordValue)
+                            onSubmit(loginValue, passwordValue, checkBoxValue)
                         }}
                         >Войти
                         </button>

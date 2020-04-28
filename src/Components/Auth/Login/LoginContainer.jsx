@@ -2,10 +2,10 @@ import React from "react";
 import Login from "./Login";
 import {connect} from "react-redux";
 import * as axios from "axios";
-import {setAuthData, setCurrentUser} from "../../../redux/reducers/auth-reducer";
-import UserDetails from "../../Users/UserDetails/UserDetails";
+import {setAuthData, setCurrentUser, setErrorText} from "../../../redux/reducers/auth-reducer";
 import {withRouter} from "react-router";
-import {Redirect} from 'react-router-dom'
+import PreLoader from "../../Common/Preloader/PreLoader";
+
 
 const querystring = require('querystring');
 
@@ -37,9 +37,13 @@ class LoginContainer extends React.Component {
             data: str,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (response) {
-
-            that.props.history.push(`/user/${response.data.currentUser[0].idUser}`)
-            debugger
+            if (response.data.error === 0) {
+                that.props.history.push(`/auth/me`)
+                that.props.setErrorText('')
+            }
+            if (response.data.error === 1) {
+                that.props.setErrorText('AUTH ERROR')
+            }
         });
     }
 
@@ -48,6 +52,7 @@ class LoginContainer extends React.Component {
             <Login authData={this.props.authData}
                    onSubmit={this.onSubmit}
                    currentUser={this.props.currentUser}
+                   errorText={this.props.errorText}
             />
         }</div>
     }
@@ -56,8 +61,12 @@ class LoginContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         authData: state.Auth.authData,
-        currentUser: state.Auth.currentUser
+        currentUser: state.Auth.currentUser,
+        errorText: state.Auth.errorText
     }
 }
 let withRouterLoginContainer = withRouter(LoginContainer)
-export default connect(mapStateToProps, {setAuthData, setCurrentUser})(withRouterLoginContainer)
+export default connect(mapStateToProps,
+    {
+        setAuthData, setCurrentUser, setErrorText
+    })(withRouterLoginContainer)
