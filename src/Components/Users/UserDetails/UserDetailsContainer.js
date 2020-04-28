@@ -11,7 +11,7 @@ class UserDetailsContainer extends React.Component {
         if (!idUser) {
             idUser = 1
         }
-        axios.get(`http://localhost:4000/api/user/${idUser}`)
+        axios.get(`http://api.com:4000/api/user/${idUser}`)
             .then(response => {
                 this.props.setUserDetails(response.data.users)
             })

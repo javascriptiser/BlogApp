@@ -14,8 +14,9 @@ let App = () => {
             {/*<Navbar/>*/}
             {/*<Route path="/posts" render={() => <PostsContainer/>}/>*/}
             {/*<Route path="/users" render={() => <UsersContainer/>}/>*/}
-            {/*<Route path="/user/:idUser?" render={() => <UserDetailsContainer/>}/>*/}
-            <LoginContainer/>
+            <Route path="/user/:idUser?" render={() => <UserDetailsContainer/>}/>
+            <Route path="/auth" render={() => <LoginContainer/>}/>
+
         </div>
     );
 }
