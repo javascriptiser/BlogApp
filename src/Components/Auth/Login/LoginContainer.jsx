@@ -2,9 +2,14 @@ import React from "react";
 import Login from "./Login";
 import {connect} from "react-redux";
 import * as axios from "axios";
-import {setAuthData, setCurrentUser, setErrorText} from "../../../redux/reducers/auth-reducer";
+import {
+    changeLoginText,
+    changePasswordText, changeRememberMeRadioButton,
+    setAuthData,
+    setCurrentUser,
+    setErrorText
+} from "../../../redux/reducers/auth-reducer";
 import {withRouter} from "react-router";
-import PreLoader from "../../Common/Preloader/PreLoader";
 
 
 const querystring = require('querystring');
@@ -14,6 +19,7 @@ class LoginContainer extends React.Component {
 // или undefined, если ничего не найдено
     getCookie(name) {
         let matches = document.cookie.match(new RegExp(
+            // eslint-disable-next-line no-useless-escape
             "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
         ));
         return matches ? decodeURIComponent(matches[1]) : undefined;
@@ -38,7 +44,7 @@ class LoginContainer extends React.Component {
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).then(function (response) {
             if (response.data.error === 0) {
-                that.props.history.push(`/auth/me`)
+                that.props.history.push(`/Profile`)
                 that.props.setErrorText('')
             }
             if (response.data.error === 1) {
@@ -53,6 +59,13 @@ class LoginContainer extends React.Component {
                    onSubmit={this.onSubmit}
                    currentUser={this.props.currentUser}
                    errorText={this.props.errorText}
+                   loginText={this.props.loginText}
+                   passwordText={this.props.passwordText}
+                   rememberMeRadioButton={this.props.rememberMeRadioButton}
+                   changeLoginText={this.props.changeLoginText}
+                   changePasswordText={this.props.changePasswordText}
+                   changeRememberMeRadioButton={this.props.changeRememberMeRadioButton}
+
             />
         }</div>
     }
@@ -62,11 +75,15 @@ let mapStateToProps = (state) => {
     return {
         authData: state.Auth.authData,
         currentUser: state.Auth.currentUser,
-        errorText: state.Auth.errorText
+        errorText: state.Auth.errorText,
+        loginText: state.Auth.loginText,
+        passwordText: state.Auth.passwordText,
+        rememberMeRadioButton: state.Auth.rememberMeRadioButton
     }
 }
 let withRouterLoginContainer = withRouter(LoginContainer)
 export default connect(mapStateToProps,
     {
-        setAuthData, setCurrentUser, setErrorText
+        setAuthData, setCurrentUser, setErrorText,
+        changeLoginText, changePasswordText, changeRememberMeRadioButton
     })(withRouterLoginContainer)
