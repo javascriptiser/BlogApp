@@ -8,7 +8,7 @@ const CHANGE_REMEMBER_ME_RADIO_BUTTON = 'CHANGE_REMEMBER_ME_RADIO_BUTTON'
 
 let initialState = {
     authData: {},
-    currentUser:{},
+    currentUser:0,
     errorText:'',
     loginText:'',
     passwordText:'',

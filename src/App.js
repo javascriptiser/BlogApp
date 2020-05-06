@@ -1,34 +1,34 @@
 import React from 'react';
-import s from './app.module.css';
-import {Route} from "react-router";
+import {Redirect, Route} from "react-router";
 import LoginContainer from "./Components/Auth/Login/LoginContainer";
-//import s from "./Components/Main/Main.module.css";
-import HeaderContainer from "./Components/Header/HeaderContainer";
-import NavBarContainer from "./Components/NavBar/NavBarContainer";
-import PostsContainer from "./Components/Posts/PostsContainer";
-import FooterContainer from "./Components/Footer/FooterContainer";
+import MainContainer from "./Components/Main/MainContainer";
+import {connect} from "react-redux";
+import {setCurrentUser} from "./redux/reducers/auth-reducer";
 
+let getCookie = (name) => {
+    let matches = document.cookie.match(new RegExp(
+        // eslint-disable-next-line no-useless-escape
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
 
-let App = () => {
+let App = (props) => {
+
+    let authorizedIdUser = getCookie('authorizedIdUser')
+    setCurrentUser(authorizedIdUser);
     return (
         <div>
-            <Route path="/auth" render={() => <LoginContainer/>}/>
-            <div className={s.MainWrapper}>
-                <div className={s.HeaderWrapper}>
-                    <HeaderContainer/>
-                </div>
-                <div className={s.NavBarWrapper}>
-                    <NavBarContainer/>
-                </div>
-                <div className={s.ContentWrapper}>
-                    <Route path="/Posts" render={() => <PostsContainer/>}/>
-                </div>
-                <div className={s.FooterWrapper}>
-                    <FooterContainer/>
-                </div>
-            </div>
+            <Route path='/' render={() => authorizedIdUser ? <Redirect to='/Profile'/> : <Redirect to='/auth'/>}/>
+            <Route path='/auth' render={() => <LoginContainer/>}/>
+            <Route path='/Profile' render={() => <MainContainer/>}/>
         </div>
     );
 }
 
-export default App;
+let mapStateToProps = (state)=>{
+    return {
+
+    }
+}
+export default connect(mapStateToProps,{setCurrentUser})(App);

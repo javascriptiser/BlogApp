@@ -9,7 +9,7 @@ import {
     setCurrentUser,
     setErrorText
 } from "../../../redux/reducers/auth-reducer";
-import {withRouter} from "react-router";
+import {Redirect, withRouter} from "react-router";
 
 
 const querystring = require('querystring');
@@ -46,6 +46,7 @@ class LoginContainer extends React.Component {
             if (response.data.error === 0) {
                 that.props.history.push(`/Profile`)
                 that.props.setErrorText('')
+                that.props.setCurrentUser(response.data.currentUser[0].idUser);
             }
             if (response.data.error === 1) {
                 that.props.setErrorText('AUTH ERROR')
@@ -53,7 +54,8 @@ class LoginContainer extends React.Component {
         });
     }
 
-    render() {
+    render()
+    {
         return <div>{
             <Login authData={this.props.authData}
                    onSubmit={this.onSubmit}
@@ -65,7 +67,6 @@ class LoginContainer extends React.Component {
                    changeLoginText={this.props.changeLoginText}
                    changePasswordText={this.props.changePasswordText}
                    changeRememberMeRadioButton={this.props.changeRememberMeRadioButton}
-
             />
         }</div>
     }

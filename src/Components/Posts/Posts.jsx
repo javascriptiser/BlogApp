@@ -4,7 +4,7 @@ import s from "./Posts.module.css"
 let Posts = (props) => {
     return (
         <div className={s.PostsWrapper}>
-            MY POSTS
+            POSTS
         </div>
     )
 }

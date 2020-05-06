@@ -9,7 +9,7 @@ let NavBar = (props) =>{
                 <NavLink to="/Profile">Мой профиль</NavLink>
             </div>
             <div>
-                <NavLink to="/Posts">Мои посты</NavLink>
+                <NavLink to="/Profile/MyPosts">Мои посты</NavLink>
             </div>
         </nav>
     }</div>

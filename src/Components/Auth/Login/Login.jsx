@@ -39,7 +39,7 @@ let Login = (props) => {
                             <label>
                                 <input type="checkbox" name="checkbox"
                                        checked={props.rememberMeRadioButton}
-                                       onClick={event => props.changeRememberMeRadioButton(event.target.checked)}
+                                       onChange={event => props.changeRememberMeRadioButton(event.target.checked)}
                                 /> Запомнить меня
                             </label>
                         </div>
