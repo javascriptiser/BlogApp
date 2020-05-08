@@ -1,10 +1,10 @@
 import React from "react";
 import s from './Footer.module.css'
 
-let Footer = (props) =>{
+let Footer = (props) => {
     return <>{
         <div className={s.FooterWrapper}>
-            Footer
+            THIS SHIT DEVELOPED BY VORONETSKI ANTON
         </div>
     }</>
 }

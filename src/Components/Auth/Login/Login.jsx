@@ -5,8 +5,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 let Login = (props) => {
-
-
     return <div className={s.loginWrapper}>{
         <div className={s.form}>
             <div className="form-group">
@@ -14,7 +12,7 @@ let Login = (props) => {
                     <label htmlFor="inputEmail3" className="col-sm-2 control-label">Логин</label>
                     <div className="col-sm-10">
                         <input type="text" className="form-control"
-                               placeholder={props.authData.login ? props.authData.login : "Login"}
+                               placeholder="Login"
                                name="login"
                                value={props.loginText}
                                onChange={event => props.changeLoginText(event.target.value)}
@@ -25,7 +23,7 @@ let Login = (props) => {
                     <label htmlFor="inputPassword3" className="col-sm-2 control-label">Пароль</label>
                     <div className="col-sm-10">
                         <input type="password" className="form-control"
-                               placeholder={props.authData.password ? props.authData.password : "Password"}
+                               placeholder="Password"
                                name="password"
                                value={props.passwordText}
                                onChange={event => props.changePasswordText(event.target.value)}

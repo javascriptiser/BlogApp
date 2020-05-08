@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import {connect} from "react-redux";
 
 class HeaderContainer extends React.Component {
 
@@ -9,10 +10,9 @@ class HeaderContainer extends React.Component {
     }
 
 
-
     render() {
         return (
-            <Header/>
+            <Header userLoginText={this.props.userLoginText}/>
         )
 
     }
@@ -20,8 +20,8 @@ class HeaderContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-
+        userLoginText : state.Auth.currentUser.Login
     }
 }
 
-export default HeaderContainer;
+export default connect(mapStateToProps, {})(HeaderContainer);

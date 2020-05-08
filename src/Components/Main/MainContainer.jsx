@@ -11,7 +11,7 @@ class MainContainer extends React.Component {
 
     render() {
         return (
-            <Main currentIdUser={this.props.currentIdUser}/>
+            <Main/>
         )
 
     }
@@ -19,7 +19,7 @@ class MainContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        currentIdUser: state.Auth.currentUser
+
     }
 }
 

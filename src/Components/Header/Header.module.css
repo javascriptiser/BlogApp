@@ -1,11 +1,15 @@
 .HeaderWrapper {
     display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    width: 100%;
 }
 
-.ProfilePage {
-    margin-right: 50px;
+.HeaderNavContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
 }
-
-.PostsPage {
-
+.userLoginTextContainer{
+    width: 20%;
 }

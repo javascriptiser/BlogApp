@@ -6,7 +6,7 @@ let NavBar = (props) =>{
     return <div className={s.NavBarWrapper}>{
         <nav>
             <div>
-                <NavLink to="/Profile">Мой профиль</NavLink>
+                <NavLink to="/Profile/Me">Мой профиль</NavLink>
             </div>
             <div>
                 <NavLink to="/Profile/MyPosts">Мои посты</NavLink>

@@ -1,3 +1,5 @@
+import {authAPI} from "../../Api/Api";
+
 const SET_AUTH_DATA = 'SET_AUTH_DATA'
 const SET_CURRENT_USER = 'SET_CURRENT_USER'
 const SET_ERROR_TEXT = 'SET_ERROR_TEXT'
@@ -5,16 +7,14 @@ const CHANGE_LOGIN_TEXT = 'CHANGE_LOGIN_TEXT'
 const CHANGE_PASSWORD_TEXT = 'CHANGE_PASSWORD_TEXT'
 const CHANGE_REMEMBER_ME_RADIO_BUTTON = 'CHANGE_REMEMBER_ME_RADIO_BUTTON'
 
-
 let initialState = {
     authData: {},
-    currentUser:0,
-    errorText:'',
-    loginText:'',
-    passwordText:'',
-    rememberMeRadioButton:false
+    currentUser: {},
+    errorText: '',
+    loginText: '',
+    passwordText: '',
+    rememberMeRadioButton: false
 }
-
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -61,6 +61,7 @@ const authReducer = (state = initialState, action) => {
         }
     }
 }
+
 export const setAuthData = (authData) => {
     return {
         type: SET_AUTH_DATA,
@@ -97,4 +98,20 @@ export const changeRememberMeRadioButton = (rememberMeRadioButton) => {
         rememberMeRadioButton
     }
 }
+
+export const logInThunkCreator = (bodyParams, that) => {
+    return (dispatch) => {
+        authAPI.logIn(bodyParams)
+            .then(function (response) {
+                if (response.currentUser) {
+                    that.props.history.push(`/Profile`)
+                    dispatch(setCurrentUser(response.currentUser))
+                    dispatch(setErrorText(''))
+                } else {
+                    dispatch(setErrorText('AUTH ERROR'))
+                }
+            });
+    }
+}
+
 export default authReducer

@@ -1,22 +1,33 @@
 import React from "react";
 import MyPosts from "./MyPosts";
-import {setCurrentUser} from "../../../redux/reducers/auth-reducer";
+import {connect} from "react-redux";
+import {setPostsThunkCreator} from "../../../redux/reducers/profile-reducer";
+
+
 class MyPostsContainer extends React.Component {
 
 
     componentDidMount() {
+        if (!!this.props.currentUser.idUser) {
+            this.props.setPostsThunkCreator(this.props.currentUser.idUser);
+        }
     }
 
 
     render() {
         return (
-            <MyPosts/>
+            <MyPosts currentUser={this.props.currentUser}
+                     myPosts={this.props.myPosts}
+            />
         )
     }
 }
 
 let mapStateToProps = (state) => {
-    return {}
+    return {
+        currentUser: state.Auth.currentUser,
+        myPosts : state.Profile.myPosts
+    }
 }
 
-export default MyPostsContainer;
+export default connect(mapStateToProps, {setPostsThunkCreator})(MyPostsContainer);

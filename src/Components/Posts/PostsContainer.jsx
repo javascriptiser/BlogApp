@@ -2,16 +2,16 @@ import React from "react";
 import Posts from "./Posts";
 import {withRouter} from "react-router";
 import {connect} from "react-redux";
-import {setPosts} from "../../redux/reducers/posts-reducer";
-
+import {
+    getPostsThunkCreator,
+    postsPageChangeThunkCreator
+} from "../../redux/reducers/posts-reducer";
 
 class PostsContainer extends React.Component {
 
-
     componentDidMount() {
-
+        this.props.getPostsThunkCreator(this.props.currentPage, this.props.postsOnPage)
     }
-
 
     render() {
         return (
@@ -20,7 +20,7 @@ class PostsContainer extends React.Component {
                 postsCount={this.props.postsCount}
                 currentPage={this.props.currentPage}
                 postsOnPage={this.props.postsOnPage}
-                setPosts={this.props.setPosts}
+                postsPageChangeThunkCreator={this.props.postsPageChangeThunkCreator}
             />
         )
     }
@@ -34,8 +34,9 @@ let mapStateToProps = (state) => {
         postsOnPage: state.Posts.postsOnPage
     }
 }
+
 let withRouterPostsContainer = withRouter(PostsContainer)
 export default connect(mapStateToProps,
     {
-        setPosts
+        getPostsThunkCreator, postsPageChangeThunkCreator
     })(withRouterPostsContainer)

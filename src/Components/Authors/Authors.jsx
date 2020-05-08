@@ -1,31 +1,32 @@
 import React from "react";
-import s from "./Posts.module.css"
+import s from "./Authors.module.css"
 
-let Posts = (props) => {
+let Authors = (props) => {
 
-    let pageCount = Math.ceil(props.postsCount / props.postsOnPage);
+    let pageCount = Math.ceil(props.authorsCount / props.authorsOnPage);
     let paginator = []
     for (let i = 1; i <= pageCount; i++) {
         paginator[i] = i;
     }
-
     let pageChange = (currentPage) => {
-        props.postsPageChangeThunkCreator(currentPage,props.postsOnPage)
+        props.changeAuthorsPageThunkCreator(currentPage,props.authorsOnPage)
     }
-
     return (
         <div className={s.PostsWrapper}>
             <div className={s.PostContainer}>
-                {props.posts.map(p => {
+                {props.authors.map(p => {
                     return <div className={s.PostItem} key={p.idPost}>
                         <div>
-                            <h3>{p.Title}</h3>
+                            Фамилия : {p.LastName}
                         </div>
                         <div>
-                            <i>{p.Content}</i>
+                            Имя : {p.FirstName}
                         </div>
                         <div>
-                            Автор : {p.Firstname} {p.LastName}
+                            Email : {p.Email}
+                        </div>
+                        <div>
+                            Логин : {p.Login}
                         </div>
                     </div>
                 })}
@@ -45,4 +46,4 @@ let Posts = (props) => {
 }
 
 
-export default Posts;
+export default Authors;
