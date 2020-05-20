@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import {
     changeLoginText,
     changePasswordText, changeRememberMeRadioButton, logInThunkCreator,
-    setAuthData,
     setCurrentUser,
     setErrorText
 } from "../../../redux/reducers/auth-reducer";
@@ -19,7 +18,6 @@ class LoginContainer extends React.Component {
     render() {
         return <div>{
             <Login onSubmit={this.onSubmit}
-                   currentUser={this.props.currentUser}
                    errorText={this.props.errorText}
                    loginText={this.props.loginText}
                    passwordText={this.props.passwordText}
@@ -34,7 +32,6 @@ class LoginContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        authData: state.Auth.authData,
         currentUser: state.Auth.currentUser,
         errorText: state.Auth.errorText,
         loginText: state.Auth.loginText,
@@ -45,7 +42,7 @@ let mapStateToProps = (state) => {
 let withRouterLoginContainer = withRouter(LoginContainer)
 export default connect(mapStateToProps,
     {
-        setAuthData, setCurrentUser, setErrorText,
+        setCurrentUser, setErrorText,
         changeLoginText, changePasswordText, changeRememberMeRadioButton,
         logInThunkCreator
     })(withRouterLoginContainer)

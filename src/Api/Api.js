@@ -26,6 +26,12 @@ export const profileAPI = {
     getAllMyPosts(idUser) {
         return axios.get(`http://api.com:4000/api/user/${idUser}`)
             .then(response => {
+                return response.data.users.user[0].posts
+            });
+    },
+    getMyProfile(idUser){
+        return axios.get(`http://api.com:4000/api/user/${idUser}`)
+            .then(response => {
                 return response.data.users.user[0]
             });
     }

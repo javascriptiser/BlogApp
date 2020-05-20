@@ -6,27 +6,19 @@ import {Route} from "react-router";
 
 
 let MyPosts = (props) => {
-    if (props.currentUser.hasOwnProperty('idUser')) {
-        return <div>
-            <Route path="/Profile/MyPosts/:id" render={() => <MyPostDetailsContainer/>}/>
-            <Route exact path="/Profile/MyPosts" render={() => <div>
-                <div className={s.PostsWrapper}>
-                    MY POSTS TITLE :
-                </div>
-                <div>
-                    {!!props.myPosts
-                        ? <PostControll posts={props.myPosts}/>
-                        : ''}
-                </div>
-            </div>}/>
-        </div>
-    } else {
-        return (
+    return <div>
+        <Route path="/MyPosts/:id" render={() => <MyPostDetailsContainer/>}/>
+        <Route exact path="/MyPosts" render={() => <div>
             <div className={s.PostsWrapper}>
-                U ARE NOT AUTHORIZED
+                MY POSTS TITLE :
             </div>
-        )
-    }
+            <div>
+                {!!props.myPosts
+                    ? <PostControll posts={props.myPosts}/>
+                    : 'Постов нет'}
+            </div>
+        </div>}/>
+    </div>
 }
 
 

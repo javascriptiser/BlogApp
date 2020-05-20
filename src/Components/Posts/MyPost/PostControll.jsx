@@ -7,7 +7,7 @@ let PostControll = (props) => {
       <div>
           {props.posts.map(p=>{
               return <div>
-                  <NavLink to={`/Profile/MyPosts/${p.idPost}`}>{p.Title}</NavLink>
+                  <NavLink to={`/MyPosts/${p.idPost}`}>{p.Title}</NavLink>
                   <br/>
               </div>
           })}

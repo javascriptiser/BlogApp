@@ -20,7 +20,7 @@ class HeaderContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        userLoginText : state.Auth.currentUser.Login
+        userLoginText : state.Auth.currentUser.login
     }
 }
 

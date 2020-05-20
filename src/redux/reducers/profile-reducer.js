@@ -1,9 +1,11 @@
 import {profileAPI} from "../../Api/Api";
 
 const SET_MY_POSTS = 'SET_MY_POSTS'
+const SET_MY_PROFILE = 'SET_MY_PROFILE'
 
 let initialState = {
-    myPosts:[]
+    myPosts:[],
+    myProfile:{}
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -12,6 +14,12 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 myPosts: action.myPosts
+            }
+        }
+        case SET_MY_PROFILE: {
+            return {
+                ...state,
+                myProfile: action.myProfile
             }
         }
         default: {
@@ -28,12 +36,26 @@ export const setMyPosts = (myPosts) => {
         myPosts
     }
 }
+export const setMyProfile = (myProfile) => {
+    return {
+        type: SET_MY_PROFILE,
+        myProfile
+    }
+}
 
 export const setPostsThunkCreator = (idUser) =>{
     return (dispatch)=>{
         profileAPI.getAllMyPosts(idUser)
             .then(response => {
-              dispatch(setMyPosts(response.posts))
+              dispatch(setMyPosts(response))
+            })
+    }
+}
+export const setMyProfileThunkCreator = (idUser) =>{
+    return (dispatch)=>{
+        profileAPI.getMyProfile(idUser)
+            .then(response => {
+              dispatch(setMyProfile(response))
             })
     }
 }

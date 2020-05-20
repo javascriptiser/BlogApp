@@ -2,15 +2,15 @@ import React from "react";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 import {setPostsThunkCreator} from "../../../redux/reducers/profile-reducer";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 
 class MyPostsContainer extends React.Component {
 
 
     componentDidMount() {
-        if (!!this.props.currentUser.idUser) {
-            this.props.setPostsThunkCreator(this.props.currentUser.idUser);
-        }
+        this.props.setPostsThunkCreator(this.props.currentUser.idUser);
     }
 
 
@@ -26,8 +26,11 @@ class MyPostsContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         currentUser: state.Auth.currentUser,
-        myPosts : state.Profile.myPosts
+        myPosts: state.Profile.myPosts
     }
 }
-
-export default connect(mapStateToProps, {setPostsThunkCreator})(MyPostsContainer);
+export default compose(
+    connect(mapStateToProps, {setPostsThunkCreator}),
+    withAuthRedirect
+)
+(MyPostsContainer)

@@ -7,7 +7,7 @@ import PostsContainer from "../Posts/PostsContainer";
 import FooterContainer from "../Footer/FooterContainer";
 import MyPostsContainer from "../Posts/MyPost/MyPostsContainer";
 import AuthorsContainer from "../Authors/AuthorsContainer";
-import MyPostDetailsContainer from "../Posts/MyPost/MyPostDetailsContainer";
+import ProfileContainer from "../Profile/ProfileContainer";
 
 
 let Main = (props) => {
@@ -20,9 +20,10 @@ let Main = (props) => {
                 <NavBarContainer/>
             </div>
             <div className={s.ContentWrapper}>
-                <Route path="/Profile/Authors" render={() => <AuthorsContainer/>}/>
-                <Route path="/Profile/MyPosts" render={() => <MyPostsContainer/>}/>
-                <Route path="/Profile/Posts" render={() => <PostsContainer/>}/>
+                <Route path="/Authors" render={() => <AuthorsContainer/>}/>
+                <Route path="/MyPosts" render={() => <MyPostsContainer/>}/>
+                <Route path="/Posts" render={() => <PostsContainer/>}/>
+                <Route path="/Profile" render={() => <ProfileContainer/>}/>
             </div>
             <div className={s.FooterWrapper}>
                 <FooterContainer/>
