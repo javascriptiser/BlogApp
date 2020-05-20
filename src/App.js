@@ -11,7 +11,8 @@ let App = (props) => {
     return (
         <div>
             <Route path='/auth' render={() => <LoginContainer/>}/>
-            <Route path='/' render={() => <MainContainer/>}/>
+            <Route path='/Blog' render={() => <MainContainer/>}/>
+            <Route path exact='/' render={() => <div>MYBLOG</div>}/>
         </div>
     );
 }

@@ -6,7 +6,7 @@ import React from "react";
 let LogAut = (props) => {
     return (
         <div className="dropdown show">
-            <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            <a className="btn btn-secondary dropdown-toggle" href="#s" role="button" id="dropdownMenuLink"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {props.userLoginText}
             </a>

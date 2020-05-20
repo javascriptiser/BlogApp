@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import MyPostsDetail from "./MyPostDetails";
+import MyPostsDetail from "./MyPostEdit";
 import {withRouter} from "react-router";
 
-class MyPostDetailsContainer extends React.Component {
+class MyPostEditContainer extends React.Component {
 
 
     componentDidMount() {
@@ -24,5 +24,5 @@ let mapStateToProps = (state) => {
 
     }
 }
-let MyPostDetailsContainerWithRouter = withRouter(MyPostDetailsContainer)
+let MyPostDetailsContainerWithRouter = withRouter(MyPostEditContainer)
 export default connect(mapStateToProps, {})(MyPostDetailsContainerWithRouter);

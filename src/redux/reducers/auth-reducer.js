@@ -104,7 +104,7 @@ export const logInThunkCreator = (bodyParams, that) => {
         authAPI.logIn(bodyParams)
             .then(function (response) {
                 if (response.currentUser.isAuth) {
-                    that.props.history.push(`/`)
+                    that.props.history.push(`/Blog`)
                     dispatch(setCurrentUser(response.currentUser))
                     dispatch(setErrorText(''))
                 } else {

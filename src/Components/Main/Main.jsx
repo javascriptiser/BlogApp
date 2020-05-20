@@ -20,10 +20,10 @@ let Main = (props) => {
                 <NavBarContainer/>
             </div>
             <div className={s.ContentWrapper}>
-                <Route path="/Authors" render={() => <AuthorsContainer/>}/>
-                <Route path="/MyPosts" render={() => <MyPostsContainer/>}/>
-                <Route path="/Posts" render={() => <PostsContainer/>}/>
-                <Route path="/Profile" render={() => <ProfileContainer/>}/>
+                <Route path="/Blog/Authors" render={() => <AuthorsContainer/>}/>
+                <Route path="/Blog/MyPosts" render={() => <MyPostsContainer/>}/>
+                <Route path="/Blog/Posts" render={() => <PostsContainer/>}/>
+                <Route path="/Blog/Profile" render={() => <ProfileContainer/>}/>
             </div>
             <div className={s.FooterWrapper}>
                 <FooterContainer/>

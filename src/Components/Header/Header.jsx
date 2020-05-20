@@ -8,10 +8,10 @@ let Header = (props) => {
         <div className={s.HeaderWrapper}>
             <div className={s.HeaderNavContainer}>
                 <div className={s.ProfilePage}>
-                    <NavLink to="/Authors">Список авторов</NavLink>
+                    <NavLink to="/Blog/Authors">Список авторов</NavLink>
                 </div>
                 <div className={s.PostsPage}>
-                    <NavLink to="/Posts">Посты</NavLink>
+                    <NavLink to="/Blog/Posts">Посты</NavLink>
                 </div>
             </div>
             <div className={s.userLoginTextContainer}>
