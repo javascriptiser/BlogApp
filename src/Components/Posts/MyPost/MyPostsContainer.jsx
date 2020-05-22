@@ -6,6 +6,7 @@ import {compose} from "redux";
 import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 
+
 class MyPostsContainer extends React.Component {
 
 
@@ -34,3 +35,6 @@ export default compose(
     withAuthRedirect
 )
 (MyPostsContainer)
+// export default compose(
+//     connect(mapStateToProps, {setPostsThunkCreator}), withRouter)
+// (MyPostsContainer)

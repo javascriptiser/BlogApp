@@ -1,6 +1,6 @@
 .MainWrapper {
-    height: 100vh;
-    background-color: #ccc;
+    min-height: 100vh;
+    background-color: #100e17;
     display: grid;
     grid-template-rows: 50px 1fr 50px;
     grid-template-columns: 1fr 5fr 5fr;
@@ -9,32 +9,34 @@
 
 .HeaderWrapper {
     grid-area: h;
-    background-color: honeydew;
     display: flex;
     align-items: center;
+    border-bottom: #ccc 1px solid;
 }
 
 .NavBarWrapper {
     grid-area: n;
-    background-color: navajowhite;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-right: #ccc 1px solid;
 }
 
 .ContentWrapper {
     grid-area: c;
-    background-color: cadetblue;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color:#fff;
+    padding-top: 10px;
 }
 
 .FooterWrapper {
+    margin-top: 5px;
+    border-top: #ccc 1px solid;
     grid-area: f;
-    background-color: firebrick;
     display: flex;
     flex-direction: column;
     justify-content: center;

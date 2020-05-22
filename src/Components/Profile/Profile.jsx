@@ -1,15 +1,16 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 
 let Profile = (props) => {
     return <div>
-        <div> MY PROFILE : =></div>
-        <div>ID : {props.myProfile.idUser}</div>
-        <div>FIRST NAME : {props.myProfile.FirstName}</div>
-        <div>LAST NAME : {props.myProfile.LastName}</div>
-        <div>EMAIL : {props.myProfile.Email}</div>
-        <div>LOGIN : {props.myProfile.Login}</div>
-        <div>PASSWORD : {props.myProfile.Password}</div>
+        <div>Идентификатор : {props.myProfile.idUser}</div>
+        <div>Имя : {props.myProfile.FirstName}</div>
+        <div>Фамилия : {props.myProfile.LastName}</div>
+        <div>Почта : {props.myProfile.Email}</div>
+        <div>Логин : {props.myProfile.Login}</div>
+        <div>Пароль : {props.myProfile.Password}</div>
+        <NavLink to={"/Blog/Profile/Edit"} className={"btn btn-primary"}>Изменить</NavLink>
     </div>
 }
 

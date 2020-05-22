@@ -1,0 +1,9 @@
+.registeryWrapper {
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../../../Assets/Images/loginFon.png");
+    background-size: cover;
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Main.module.css"
 import HeaderContainer from "../Header/HeaderContainer";
-import NavBarContainer from "../NavBar/NavBarContainer";
 import {Route} from "react-router";
 import PostsContainer from "../Posts/PostsContainer";
 import FooterContainer from "../Footer/FooterContainer";
@@ -15,9 +14,6 @@ let Main = (props) => {
         <div className={s.MainWrapper}>
             <div className={s.HeaderWrapper}>
                 <HeaderContainer/>
-            </div>
-            <div className={s.NavBarWrapper}>
-                <NavBarContainer/>
             </div>
             <div className={s.ContentWrapper}>
                 <Route path="/Blog/Authors" render={() => <AuthorsContainer/>}/>

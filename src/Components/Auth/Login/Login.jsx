@@ -2,12 +2,14 @@ import React from "react";
 import s from './login.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import chel from "../../../Assets/Images/chel.png"
 
 
 let Login = (props) => {
-    return <div className={s.loginWrapper}>{
+    return <div className={s.loginWrapper}>
+        <img src={chel} className={s.bigChel} alt=""/>
         <div className={s.form}>
-            <div className="form-group">
+            <div className={"form-group " + s.formContainer}>
                 <div className="form-group">
                     <label htmlFor="inputEmail3" className="col-sm-2 control-label">Логин</label>
                     <div className="col-sm-10">
@@ -33,18 +35,6 @@ let Login = (props) => {
                 </div>
                 <div className="form-group">
                     <div className="col-sm-offset-2 col-sm-10">
-                        <div className="checkbox">
-                            <label>
-                                <input type="checkbox" name="checkbox"
-                                       checked={props.rememberMeRadioButton}
-                                       onChange={event => props.changeRememberMeRadioButton(event.target.checked)}
-                                /> Запомнить меня
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <div className="col-sm-offset-2 col-sm-10">
                         <button className="btn btn-primary btn-sm" onClick={() => {
                             props.onSubmit({
                                 login: props.loginText,
@@ -58,7 +48,6 @@ let Login = (props) => {
                 </div>
             </div>
         </div>
-    }
     </div>
 }
 export default Login

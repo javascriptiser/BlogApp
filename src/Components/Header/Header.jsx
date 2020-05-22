@@ -7,16 +7,16 @@ let Header = (props) => {
     return (
         <div className={s.HeaderWrapper}>
             <div className={s.HeaderNavContainer}>
-                <div className={s.ProfilePage}>
-                    <NavLink to="/Blog/Authors">Список авторов</NavLink>
+                <div>
+                    <NavLink to="/Blog/Authors" className={'btn btn-primary '+s.Authors}>Список авторов</NavLink>
                 </div>
                 <div className={s.PostsPage}>
-                    <NavLink to="/Blog/Posts">Посты</NavLink>
+                    <NavLink to="/Blog/Posts" className={'btn btn-primary'}>Посты</NavLink>
                 </div>
             </div>
             <div className={s.userLoginTextContainer}>
                 <div className={s.userLoginText}>
-                    {props.userLoginText ? <LogAut userLoginText={props.userLoginText}/> : 'unauthorized'}
+                    {props.userLoginText ? <LogAut userLoginText={props.userLoginText}/> : <NavLink to={"/"} className={'btn btn-primary'}>Войти</NavLink>}
                 </div>
             </div>
         </div>

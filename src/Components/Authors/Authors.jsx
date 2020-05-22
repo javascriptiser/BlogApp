@@ -34,10 +34,10 @@ let Authors = (props) => {
             <div className={s.PaginatorContainer}>
                 {
                     paginator.map(p => {
-                        return <div className={p === props.currentPage ? s.PaginatorActiveItem : ''}
+                        return <span className={p === props.currentPage ? s.PaginatorActiveItem : ''}
                                     onClick={() => pageChange(p)} key={p}>
                             {p}
-                        </div>
+                        </span>
                     })
                 }
             </div>

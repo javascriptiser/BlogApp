@@ -18,13 +18,13 @@ let Posts = (props) => {
             <div className={s.PostContainer}>
                 {props.posts.map(p => {
                     return <div className={s.PostItem} key={p.idPost}>
-                        <div>
+                        <div className={s.Title}>
                             <h3>{p.Title}</h3>
                         </div>
-                        <div>
-                            <i>{p.Content}</i>
+                        <div className={s.Content}>
+                            {p.Content}
                         </div>
-                        <div>
+                        <div className={s.Author}>
                             Автор : {p.Firstname} {p.LastName}
                         </div>
                     </div>
@@ -33,10 +33,10 @@ let Posts = (props) => {
             <div className={s.PaginatorContainer}>
                 {
                     paginator.map(p => {
-                        return <div className={p === props.currentPage ? s.PaginatorActiveItem : ''}
+                        return <span className={p === props.currentPage ? s.PaginatorActiveItem : ''}
                                     onClick={() => pageChange(p)} key={p}>
                             {p}
-                        </div>
+                        </span>
                     })
                 }
             </div>

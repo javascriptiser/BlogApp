@@ -16,17 +16,16 @@ class LoginContainer extends React.Component {
     }
 
     render() {
-        return <div>{
-            <Login onSubmit={this.onSubmit}
-                   errorText={this.props.errorText}
-                   loginText={this.props.loginText}
-                   passwordText={this.props.passwordText}
-                   rememberMeRadioButton={this.props.rememberMeRadioButton}
-                   changeLoginText={this.props.changeLoginText}
-                   changePasswordText={this.props.changePasswordText}
-                   changeRememberMeRadioButton={this.props.changeRememberMeRadioButton}
-            />
-        }</div>
+        return <Login onSubmit={this.onSubmit}
+                      errorText={this.props.errorText}
+                      loginText={this.props.loginText}
+                      passwordText={this.props.passwordText}
+                      rememberMeRadioButton={this.props.rememberMeRadioButton}
+                      changeLoginText={this.props.changeLoginText}
+                      changePasswordText={this.props.changePasswordText}
+                      changeRememberMeRadioButton={this.props.changeRememberMeRadioButton}
+        />
+
     }
 }
 

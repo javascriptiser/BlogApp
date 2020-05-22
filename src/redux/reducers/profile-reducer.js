@@ -1,11 +1,12 @@
 import {profileAPI} from "../../Api/Api";
+import {setCurrentUser} from "./auth-reducer";
 
 const SET_MY_POSTS = 'SET_MY_POSTS'
 const SET_MY_PROFILE = 'SET_MY_PROFILE'
 
 let initialState = {
-    myPosts:[],
-    myProfile:{}
+    myPosts: [],
+    myProfile: {}
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -43,19 +44,28 @@ export const setMyProfile = (myProfile) => {
     }
 }
 
-export const setPostsThunkCreator = (idUser) =>{
-    return (dispatch)=>{
+export const setPostsThunkCreator = (idUser) => {
+    return (dispatch) => {
         profileAPI.getAllMyPosts(idUser)
             .then(response => {
-              dispatch(setMyPosts(response))
+                dispatch(setMyPosts(response))
             })
     }
 }
-export const setMyProfileThunkCreator = (idUser) =>{
-    return (dispatch)=>{
+export const editUserThunkCreator = (idUser, fname, lname, email, login, password) => {
+    return (dispatch) => {
+        profileAPI.editMyProfile(idUser, fname, lname, email, login, password)
+            .then(response => {
+                dispatch(setMyProfileThunkCreator(idUser))
+                dispatch(setCurrentUser({idUser: idUser, login: login, isAuth: true}))
+            })
+    }
+}
+export const setMyProfileThunkCreator = (idUser) => {
+    return (dispatch) => {
         profileAPI.getMyProfile(idUser)
             .then(response => {
-              dispatch(setMyProfile(response))
+                dispatch(setMyProfile(response))
             })
     }
 }

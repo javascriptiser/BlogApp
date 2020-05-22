@@ -3,7 +3,9 @@ import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect"
 import {compose} from "redux";
 import Profile from "./Profile";
-import {setMyProfileThunkCreator} from "../../redux/reducers/profile-reducer";
+import {editUserThunkCreator, setMyProfileThunkCreator} from "../../redux/reducers/profile-reducer";
+import {Route, withRouter} from "react-router";
+import ProfileEditForm from "./ProfileEditForm";
 
 
 class ProfileContainer extends React.Component {
@@ -13,12 +15,22 @@ class ProfileContainer extends React.Component {
         this.props.setMyProfileThunkCreator(this.props.currentUser.idUser);
     }
 
+    onSubmit(formData) {
+        this.props.editUserThunkCreator(this.props.myProfile.idUser, formData.fname, formData.lname, formData.email, formData.login, formData.pass)
+        this.props.history.push("/Blog/Profile")
+    }
 
     render() {
-        return (
-            <Profile myProfile={this.props.myProfile}
-            />
-        )
+        return <div>
+            <Route exact path={"/Blog/Profile"} render={() => {
+                return <Profile myProfile={this.props.myProfile}
+                />;
+            }}/>
+            <Route exact path={"/Blog/Profile/Edit"} render={() => {
+                return <ProfileEditForm onSubmit={this.onSubmit.bind(this)}/>
+
+            }}/>
+        </div>
     }
 }
 
@@ -29,7 +41,8 @@ let mapStateToProps = (state) => {
     }
 }
 export default compose(
-    connect(mapStateToProps, {setMyProfileThunkCreator}),
-    withAuthRedirect
+    connect(mapStateToProps, {setMyProfileThunkCreator, editUserThunkCreator}),
+    withAuthRedirect,
+    withRouter
 )
 (ProfileContainer)

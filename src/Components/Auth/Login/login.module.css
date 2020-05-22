@@ -1,9 +1,26 @@
 .loginWrapper {
+    color: #fff;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    background: url("../../../Assets/Images/loginFon.png");
+    background-size: cover;
 }
-.form {
-    width: 500px;
+
+.bigChel {
+    height: 150px;
 }
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.formContainer input {
+    width: 300px;
+}
+

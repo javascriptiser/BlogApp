@@ -104,12 +104,21 @@ export const logInThunkCreator = (bodyParams, that) => {
         authAPI.logIn(bodyParams)
             .then(function (response) {
                 if (response.currentUser.isAuth) {
-                    that.props.history.push(`/Blog`)
+                    that.props.history.push(`/Blog/Posts`)
                     dispatch(setCurrentUser(response.currentUser))
                     dispatch(setErrorText(''))
                 } else {
                     dispatch(setErrorText('AUTH ERROR'))
                 }
+            });
+    }
+}
+export const registeryThunkCreator = (fname, lname, email, login, password, props) => {
+    return (dispatch) => {
+        authAPI.registery(fname, lname, email, login, password)
+            .then(function (response) {
+                debugger
+                props.history.push("/auth")
             });
     }
 }

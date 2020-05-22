@@ -1,16 +1,35 @@
 .HeaderWrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-left: 200px;
     width: 100%;
 }
 
-.HeaderNavContainer{
+.dropMenu {
+    background-color: #6c757d;
+}
+
+.dropdownText {
+    text-decoration: none;
+}
+.dropdownText:hover {
+    color:#fff;
+    text-decoration: none;
+}
+
+.HeaderNavContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 200px;
 }
-.userLoginTextContainer{
+
+.userLoginTextContainer {
     width: 20%;
+}
+
+.Authors {
+    width: 150px;
+    margin-right: 25px;
 }
